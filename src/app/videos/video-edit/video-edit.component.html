@@ -13,6 +13,9 @@
               <img class="image-display" alt="" #thumbnailDisplay>
             </div>
           </div>
+          <div class="error-msg" *ngIf="submitted && !videoForm.value.thumbnail">
+            Please choose a thumbnail image!
+          </div>
         </div>
 
         <div class="col s6">
@@ -24,6 +27,9 @@
             </div>
             <div class="file-path-wrapper">
               <input [value]="videoFileName ? videoFileName : ''" class="file-path validate" type="text">
+            </div>
+            <div class="error-msg" *ngIf="submitted && !videoFile">
+              Please choose a video!
             </div>
           </div>
 
@@ -41,19 +47,28 @@
       <div class="row">
         <div class="input-field col s6">
           <input id="title" type="text" class="validate" formControlName="title"
-                 placeholder="Give this video a nice Title">
+                 placeholder="Give this video a nice Title" required>
+
+          <div *ngIf="videoForm.controls['title'].errors && (!videoForm.controls['title'].pristine || submitted)" class="error-msg">
+            <div>Title is required!</div>
+          </div>
+
         </div>
       </div>
 
       <div class="row">
         <div class="input-field col s12">
           <textarea data-length="120" id="description" class="materialize-textarea" formControlName="description"
-                    placeholder="Try to describe the video"></textarea>
+                    placeholder="Try to describe the video" required></textarea>
+          <div *ngIf="videoForm.controls['description'].errors && (!videoForm.controls['description'].pristine || submitted)" class="error-msg">
+            <div [hidden]="!videoForm.controls['title'].errors.required">Description is required!</div>
+          </div>
         </div>
       </div>
 
       <button type="submit"
               [disabled]="videoForm.pristine && !thumbnailUpdated && !videoUpdated" class="btn btn-success">Save</button> &nbsp;
+
     </form>
   </div>
 </div>

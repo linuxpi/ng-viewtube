@@ -25,6 +25,9 @@ export class NavBarComponent implements OnInit {
         this.subscription = this.navBarService.navbarState.subscribe(
             (state: NavBarState) => {
                 this.state = state;
+                if (authService.isUserDataAvailable()) {
+                  this.state.showLogin = false;
+                }
             }
         );
     }
@@ -34,9 +37,13 @@ export class NavBarComponent implements OnInit {
     logoutUser() {
         this.authService.logout().subscribe(
           (data) => {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/']);
           }
         );
+    }
+
+    loginUser() {
+      this.router.navigate(['/login']);
     }
 
     ngOnDestroy() {

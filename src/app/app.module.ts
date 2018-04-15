@@ -26,7 +26,7 @@ import { VideoEditComponent } from './videos/video-edit/video-edit.component';
 import { SignupComponent } from './core/signup/signup.component';
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', component: VideosComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'videos', component: VideosComponent},

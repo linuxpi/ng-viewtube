@@ -4,11 +4,14 @@
       <li *ngIf="state.showHome">
         <a routerLink="videos" routerLinkActive="active">Home</a>
       </li>
-      <li *ngIf="state.showUpload">
+      <li *ngIf="state.showUpload  && !state.showLogin">
         <a routerLink="add" routerLinkActive="active">New Upoad</a>
       </li>
-      <li *ngIf="state.showLogout">
+      <li *ngIf="state.showLogout && !state.showLogin">
         <a (click)="logoutUser()">Logout</a>
+      </li>
+      <li *ngIf="state.showLogin">
+        <a (click)="loginUser()">Login</a>
       </li>
     </ul>
   </div>

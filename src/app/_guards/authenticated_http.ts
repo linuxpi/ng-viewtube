@@ -86,7 +86,6 @@ export class AuthHttpClient {
     // Getting loaderControl into lexical scope as this will not be available in catch and map callbacks
     let localLoaderControl = this.loaderControl;
     localLoaderControl.showLoader();
-    // console.log(this.http.get(url, { headers: headers }));
     return this.http.patch(url, data, { headers: headers })
       .catch(
         err => {

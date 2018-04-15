@@ -23,6 +23,8 @@ export class VideoEditComponent implements OnInit {
   thumbnailUpdated: boolean = false;
   videoUpdated: boolean = false;
 
+  submitted: boolean = false;
+
   videoForm: FormGroup;
 
   @ViewChild('thumbnailInput') thumbnailInput = ElementRef;
@@ -38,7 +40,7 @@ export class VideoEditComponent implements OnInit {
     private fb: FormBuilder
   ) {
 
-    this.navbarService.updateState(<NavBarState>{show: true, showHome: true, showLogout: true, showUpload: true});
+    this.navbarService.updateState(<NavBarState>{show: true, showHome: true, showLogout: true, showLogin: true, showUpload: true});
     if (!this.authenticationService.isUserDataAvailable()) {
       this.router.navigate(['/login'])
     }
@@ -73,7 +75,16 @@ export class VideoEditComponent implements OnInit {
           this.loading = false;
         }
       );
+
     }
+
+    this.videoForm.controls['title'].valueChanges.subscribe(data =>{
+      this.submitted = false;
+    });
+
+    this.videoForm.controls['description'].valueChanges.subscribe(data =>{
+      this.submitted = false;
+    });
 
   }
 
@@ -102,6 +113,7 @@ export class VideoEditComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.videoForm.status == "VALID") {
       let modal = this.videoForm.value;
 

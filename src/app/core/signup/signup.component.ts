@@ -16,6 +16,8 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
+  submitted: boolean = false;
+
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
@@ -28,13 +30,28 @@ export class SignupComponent implements OnInit {
     navbarService.updateState(<NavBarState>{show: false});
 
     this.signupForm = this.fb.group({
-      email: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
 
+    this.signupForm.controls['email'].valueChanges.subscribe(data => {
+      this.submitted = false;
+    });
+    this.signupForm.controls['first_name'].valueChanges.subscribe(data => {
+      this.submitted = false;
+    });
+    this.signupForm.controls['last_name'].valueChanges.subscribe(data => {
+      this.submitted = false;
+    });
+    this.signupForm.controls['username'].valueChanges.subscribe(data => {
+      this.submitted = false;
+    });
+    this.signupForm.controls['password'].valueChanges.subscribe(data => {
+      this.submitted = false;
+    });
   }
 
   private navigateToChallengeList() {
@@ -42,6 +59,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.signupForm.status == 'VALID') {
       this.authenticationService.signup(this.signupForm.value).subscribe(
         data => {

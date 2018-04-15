@@ -10,6 +10,11 @@
             <input id="username" type="text" class="validate" formControlName="username"
                    placeholder="Username">
           </div>
+
+          <div *ngIf="signupForm.controls['username'].errors && (!signupForm.controls['username'].pristine || submitted)" class="error-msg">
+            <div>Username is required!</div>
+          </div>
+
         </div>
 
         <div class="row">
@@ -17,6 +22,12 @@
             <input id="email" type="text" class="validate" formControlName="email"
                    placeholder="Email">
           </div>
+
+          <div *ngIf="signupForm.controls['email'].errors && (!signupForm.controls['email'].pristine || submitted)" class="error-msg">
+            <div *ngIf="signupForm.controls['email'].errors.required" >Email is required!</div>
+            <div *ngIf="signupForm.controls['email'].errors.email" >Invalid Email!</div>
+          </div>
+
         </div>
 
         <div class="row">
@@ -24,6 +35,11 @@
             <input id="first_name" type="text" class="validate" formControlName="first_name"
                    placeholder="First name">
           </div>
+
+          <div *ngIf="signupForm.controls['first_name'].errors && (!signupForm.controls['first_name'].pristine || submitted)" class="error-msg">
+            <div>First name is required!</div>
+          </div>
+
         </div>
 
         <div class="row">
@@ -31,6 +47,11 @@
             <input id="last_name" type="text" class="validate" formControlName="last_name"
                    placeholder="Last name">
           </div>
+
+          <div *ngIf="signupForm.controls['last_name'].errors && (!signupForm.controls['last_name'].pristine || submitted)" class="error-msg">
+            <div>Last name is required!</div>
+          </div>
+
         </div>
 
         <div class="row">
@@ -38,6 +59,11 @@
             <input id="password" type="text" class="validate" formControlName="password"
                    placeholder="Password">
           </div>
+
+          <div *ngIf="signupForm.controls['password'].errors && (!signupForm.controls['password'].pristine || submitted)" class="error-msg">
+            <div>Password is required!</div>
+          </div>
+
         </div>
 
         <button [disabled]="signupForm.pristine" class="waves-effect waves-light btn signup-button">Sign Up</button>

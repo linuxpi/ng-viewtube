@@ -27,10 +27,7 @@ export class VideosComponent implements OnInit {
     private navbarService: NavBarService,
     private sanitizer: DomSanitizer
   ) {
-    this.navbarService.updateState(<NavBarState>{show: true, showHome: false, showLogout: true, showUpload: true});
-    if (!this.authenticationService.isUserDataAvailable()) {
-      this.router.navigate(['/login'])
-    }
+    this.navbarService.updateState(<NavBarState>{show: true, showHome: false, showLogout: true, showLogin: true, showUpload: true});
     this.service.getVideos().subscribe(
       videos => {
         if (videos.length > 0) {
