@@ -6,6 +6,7 @@ import { SECRET_KEY } from "app/constants";
 import { NavBarService } from 'app/core/navbar/navbar.service';
 import { NavBarState } from 'app/core/navbar/navbar.state';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-signup',
@@ -30,7 +31,7 @@ export class SignupComponent implements OnInit {
     navbarService.updateState(<NavBarState>{show: false});
 
     this.signupForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.compose([Validators.email, Validators.required])],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       username: ['', Validators.required],
