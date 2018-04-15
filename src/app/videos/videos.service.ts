@@ -10,7 +10,6 @@ const API_ROOT = environment.api_root;
 @Injectable()
 export class VideosService {
   constructor (
-    private http: Http,
     private authHttpClient: AuthHttpClient
   ) {
     this.authHttpClient = authHttpClient;
@@ -18,21 +17,21 @@ export class VideosService {
 
   getVideos() {
     let url = API_ROOT + 'videos/videos/';
-    return this.authHttpClient.get(url).map(data => data.json());
+    return this.authHttpClient.get(url);
   }
 
   getVideo(id: number) {
     let url = API_ROOT + 'videos/videos/' + id + '/';
-    return this.authHttpClient.get(url).map(data => data.json())
+    return this.authHttpClient.get(url);
   }
 
-  putVideo(video: Video) {
+  patchVideo(video: Video) {
     let url = API_ROOT + 'videos/videos/' + video.id + '/';
-    return this.authHttpClient.put(url, video).map(data => data.json());
+    return this.authHttpClient.patch(url, video);
   }
 
   postVideo(video: Video) {
     let url = API_ROOT + 'videos/videos/';
-    return this.authHttpClient.post(url, video).map(data => data.json());
+    return this.authHttpClient.post(url, video);
   }
 }

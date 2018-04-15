@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import {RouterModule, Routes} from '@angular/router';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {AuthGuard} from './_guards/index';
 
@@ -17,16 +17,19 @@ import {AuthHttpClient} from './_guards/authenticated_http';
 import {AuthenticationService} from './core/authentication/authentication.service';
 import {NavBarService} from './core/navbar/navbar.service';
 import {LoaderService} from './core/loader/loader.service';
-import {HttpModule} from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 import {CookieService} from 'ngx-cookie-service';
 import { VideosService } from './videos/videos.service';
 import { VideosComponent } from './videos/videos.component';
 import { VideoItemComponent } from './videos/video-item/video-item.component';
+import { VideoEditComponent } from './videos/video-edit/video-edit.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'videos', component: VideosComponent},
+  {path: 'add', component: VideoEditComponent},
+  {path: 'video/edit/:id', component: VideoEditComponent},
   {path: '**', redirectTo: 'login'}
 ];
 
@@ -38,13 +41,15 @@ const appRoutes: Routes = [
     NavBarComponent,
     LoaderComponent,
     VideosComponent,
-    VideoItemComponent
+    VideoItemComponent,
+    VideoEditComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    HttpModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,

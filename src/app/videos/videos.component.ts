@@ -26,11 +26,10 @@ export class VideosComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private navbarService: NavBarService
   ) {
-    this.navbarService.updateState(<NavBarState>{show: true, showHome: false, showLogout: true});
+    this.navbarService.updateState(<NavBarState>{show: true, showHome: false, showLogout: true, showUpload: true});
     if (!this.authenticationService.isUserDataAvailable()) {
       this.router.navigate(['/login'])
     }
-
     this.service.getVideos().subscribe(
       videos => {
         if (videos.length > 0) {
@@ -54,6 +53,10 @@ export class VideosComponent implements OnInit {
   closePlayer(): void{
     this.showPlayer = false;
     this.playingVideo = undefined;
+  }
+
+  editVideo(video: Video): void {
+    this.router.navigate(['/video/edit/', video.id])
   }
 
 }

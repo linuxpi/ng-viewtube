@@ -5,6 +5,7 @@ import { SECRET_KEY } from "app/constants";
 import { AuthHttpClient } from 'app/_guards/authenticated_http'
 import { environment } from 'environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import {Observable} from 'rxjs/Observable';
 const API_ROOT = environment.api_root;
 
 @Injectable()
@@ -16,15 +17,15 @@ export class AuthenticationService {
 
     login(username: string, raw_password: string) {
       let password = HmacSHA512(raw_password, SECRET_KEY).toString();
-      return this.http.post(API_ROOT + 'accounts/sign-in/', JSON.stringify({username: username, password: password}))
-                      .map((response: Response) => {
-                            let data = response.json();
-                            if (data && data.token) {
-                              // store user details and token in local storage to keep user logged in between page refreshes
-                              this.cookieService.set('currentUser', JSON.stringify(data), 10/360);
-                            }
-                            return data;
-                      });
+      return this.http.post(API_ROOT + 'accounts/sign-in/', JSON.stringify({username: username, password: password})).map(
+        response => {
+            if (response && response.token) {
+              // store user details and token in local storage to keep user logged in between page refreshes
+              this.cookieService.set('currentUser', JSON.stringify(response), 10/360);
+            }
+            return response;
+        }
+      );
     }
 
     logout() {

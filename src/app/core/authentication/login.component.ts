@@ -36,14 +36,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.user.email && this.user.password) {
-      this.authenticationService.login(this.user.email, this.user.password)
-        .subscribe(
-          data => {
+      this.authenticationService.login(this.user.email, this.user.password).subscribe(
+        data => {
             this.navigateToChallengeList();
-          },
-          error => {
-              alert("Username or password incorrect");
-          });
+        }, err => {
+          alert("Username or password incorrect");
+        }
+      );
     }
   }
 

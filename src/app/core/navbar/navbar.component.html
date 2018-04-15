@@ -2,7 +2,10 @@
   <div class="nav-wrapper container">
     <ul id="nav-mobile" class="right">
       <li *ngIf="state.showHome">
-        <a routerLink="cd" routerLinkActive="active">Home</a>
+        <a routerLink="videos" routerLinkActive="active">Home</a>
+      </li>
+      <li *ngIf="state.showUpload">
+        <a routerLink="add" routerLinkActive="active">New Upoad</a>
       </li>
       <li *ngIf="state.showLogout">
         <a (click)="logoutUser()">Logout</a>

@@ -6,6 +6,7 @@ export class Video{
     public file: string,
     public thumbnail: string,
     public is_private: boolean,
+    public is_owner: boolean,
     public uploaded_at: string,
   ) {}
 }

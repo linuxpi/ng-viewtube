@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <form class="col s12" [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+
+      <div class="row mt-10">
+
+        <div class="col s4">
+          <div class="image-container">
+            <input class="image-elements z-index-3 form-control image-input" (change)="onFileChange($event, false)" type="file" required
+                   id="thumbnail" name="image" #thumbnailInput>
+            <label class="image-elements z-index-1 image-text" for="thumbnail">Add Thumbnail</label>
+            <div class="image-elements z-index-2 text-center">
+              <img class="image-display" alt="" #thumbnailDisplay>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s6">
+
+          <div class="file-field input-field">
+            <div class="btn">
+              <span>Choose Video</span>
+              <input (change)="onFileChange($event, true)" type="file">
+            </div>
+            <div class="file-path-wrapper">
+              <input [value]="videoFileName ? videoFileName : ''" class="file-path validate" type="text">
+            </div>
+          </div>
+
+          <p class="mt-10">
+            <label>
+              <input formControlName="is_private" type="checkbox" />
+              <span>Do not let anyone see it!</span>
+            </label>
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="title" type="text" class="validate" formControlName="title"
+                 placeholder="Give this video a nice Title">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea data-length="120" id="description" class="materialize-textarea" formControlName="description"
+                    placeholder="Try to describe the video"></textarea>
+        </div>
+      </div>
+
+      <button type="submit"
+              [disabled]="videoForm.pristine && !thumbnailUpdated && !videoUpdated" class="btn btn-success">Save</button> &nbsp;
+    </form>
+  </div>
+</div>
