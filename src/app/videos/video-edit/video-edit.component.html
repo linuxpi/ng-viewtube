@@ -6,7 +6,7 @@
 
         <div class="col s4">
           <div class="image-container">
-            <input class="image-elements z-index-3 form-control image-input" (change)="onFileChange($event, false)" type="file" required
+            <input accept="image/*" class="image-elements z-index-3 form-control image-input" (change)="onFileChange($event, false)" type="file" required
                    id="thumbnail" name="image" #thumbnailInput>
             <label class="image-elements z-index-1 image-text" for="thumbnail">Add Thumbnail</label>
             <div class="image-elements z-index-2 text-center">
@@ -23,7 +23,7 @@
           <div class="file-field input-field">
             <div class="btn">
               <span>Choose Video</span>
-              <input (change)="onFileChange($event, true)" type="file">
+              <input (change)="onFileChange($event, true)" type="file" accept="video/*">
             </div>
             <div class="file-path-wrapper">
               <input [value]="videoFileName ? videoFileName : ''" class="file-path validate" type="text">
