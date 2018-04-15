@@ -5,7 +5,7 @@ import {AuthenticationService} from '../core/authentication/authentication.servi
 import {Router} from '@angular/router';
 import {NavBarService} from '../core/navbar/navbar.service';
 import {NavBarState} from '../core/navbar/navbar.state';
-
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-videos',
@@ -24,7 +24,8 @@ export class VideosComponent implements OnInit {
     private service: VideosService,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private navbarService: NavBarService
+    private navbarService: NavBarService,
+    private sanitizer: DomSanitizer
   ) {
     this.navbarService.updateState(<NavBarState>{show: true, showHome: false, showLogout: true, showUpload: true});
     if (!this.authenticationService.isUserDataAvailable()) {
@@ -57,6 +58,10 @@ export class VideosComponent implements OnInit {
 
   editVideo(video: Video): void {
     this.router.navigate(['/video/edit/', video.id])
+  }
+
+  sanitize(url: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url)
   }
 
 }

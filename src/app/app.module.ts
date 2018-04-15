@@ -23,9 +23,11 @@ import { VideosService } from './videos/videos.service';
 import { VideosComponent } from './videos/videos.component';
 import { VideoItemComponent } from './videos/video-item/video-item.component';
 import { VideoEditComponent } from './videos/video-edit/video-edit.component';
+import { SignupComponent } from './core/signup/signup.component';
 
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'videos', component: VideosComponent},
   {path: 'add', component: VideoEditComponent},
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     LoaderComponent,
     VideosComponent,
     VideoItemComponent,
-    VideoEditComponent
+    VideoEditComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

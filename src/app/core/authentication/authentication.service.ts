@@ -28,8 +28,17 @@ export class AuthenticationService {
       );
     }
 
+    signup(data) {
+      data.password = HmacSHA512(data.password, SECRET_KEY).toString();
+      return this.http.post(API_ROOT + 'accounts/sign-up/', JSON.stringify(data)).map(
+        response => {
+          return response;
+        }
+      );
+    }
+
     logout() {
-        return this.http.get(API_ROOT + '/v1.1/api/account/logout/')
+        return this.http.get(API_ROOT + 'accounts/logout/')
                         .map((response: Response) => {
                           this.removeUserData();
                         });

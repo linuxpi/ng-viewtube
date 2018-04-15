@@ -49,6 +49,17 @@
     background-color: var(--main-color);
 }
 
+.btn.signup-button {
+    margin-top: 25px;
+    background-color: var(--accent-color);
+    width: 100%;
+    font-weight: 600;
+}
+
+.btn.signup-button:hover, .btn.signup-button:focus {
+    background-color: var(--accent-color);
+}
+
 .error-msg {
     font-size: 12px;
     color: red;

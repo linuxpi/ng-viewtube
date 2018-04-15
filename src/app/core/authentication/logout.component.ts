@@ -21,7 +21,7 @@ export class LogoutComponent implements OnInit {
       (data) => {
         this.router.navigate(['/login']);
       }
-    )
+    );
 
     this.user = {
       "email": "",
@@ -31,4 +31,5 @@ export class LogoutComponent implements OnInit {
   }
 
   ngOnInit() {}
+
 }

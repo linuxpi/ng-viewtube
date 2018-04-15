@@ -32,7 +32,11 @@ export class NavBarComponent implements OnInit {
     ngOnInit() {}
 
     logoutUser() {
-        this.authService.logout();
+        this.authService.logout().subscribe(
+          (data) => {
+            this.router.navigate(['/login']);
+          }
+        );
     }
 
     ngOnDestroy() {

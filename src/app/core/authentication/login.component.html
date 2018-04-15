@@ -13,5 +13,6 @@
         <span class="error-msg" *ngIf="!user.password && (passwordfield.dirty  || loginform.submitted)">Password is required</span>
     </fieldset>
     <button class="waves-effect waves-light btn login-button">Login</button>
+    <label (click)="signup()" class="waves-effect waves-light btn signup-button">Sign Up</label>
   </form>
 </div>

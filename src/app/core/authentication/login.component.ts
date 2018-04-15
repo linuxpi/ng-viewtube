@@ -47,4 +47,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() { }
+
+  signup() {
+    this.router.navigate(['/signup']);
+  }
+
 }
