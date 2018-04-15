@@ -1,0 +1,26 @@
+.video-player-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #000000ba;
+}
+
+.hide-container {
+  z-index: -1;
+}
+
+.full-screen{
+  height: 100%;
+  width: 100%;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.plr-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}

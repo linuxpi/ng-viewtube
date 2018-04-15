@@ -1,0 +1,17 @@
+<div class="login-container align-center">
+  <form #loginform="ngForm" method="post" (ngSubmit)="onSubmit()"  class="login-form form-horizontal mont-font-regular">
+    <fieldset class="form-group">
+        <label for="email" class="bmd-label-floating">Email</label>
+        <input type="email" #emailfield="ngModel" class="form-control" id="email"
+              [(ngModel)]="user.email" name="email" [ngModelOptions]="{standalone: true}" />
+        <span class="error-msg" *ngIf="!user.email && (emailfield.dirty || loginform.submitted)">Email is required</span>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="password" class="bmd-label-floating">Password</label>
+        <input name="password" id="password" #passwordfield="ngModel" type="password" class="form-control"
+              [(ngModel)]="user.password" />
+        <span class="error-msg" *ngIf="!user.password && (passwordfield.dirty  || loginform.submitted)">Password is required</span>
+    </fieldset>
+    <button class="waves-effect waves-light btn login-button">Login</button>
+  </form>
+</div>

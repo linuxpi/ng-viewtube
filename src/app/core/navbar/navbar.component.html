@@ -1,0 +1,12 @@
+<nav *ngIf="state.show">
+  <div class="nav-wrapper container">
+    <ul id="nav-mobile" class="right">
+      <li *ngIf="state.showHome">
+        <a routerLink="cd" routerLinkActive="active">Home</a>
+      </li>
+      <li *ngIf="state.showLogout">
+        <a (click)="logoutUser()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

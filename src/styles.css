@@ -1,1 +1,193 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:root {
+  --main-color:  #3F51B5;
+  --accent-color:  #FA5674;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.3;
+  height: 100%;
+  width: 100%;
+  background-color: #fbfafa;
+}
+
+.mont-font-regular, body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.mont-font-bold {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.accent-heading {
+  font-size: 24px;
+  color: var(--accent-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.accent-back {
+  background-color: var(--accent-color);
+}
+
+.main-back {
+  background-color: var(--main-color);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.accent-button-bold {
+  color: var(--accent-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+.btn.accent-button-regular {
+  color: var(--accent-color);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+
+.btn.accent-button-regular:hover {
+  color: var(--accent-color);
+}
+
+.accent-text {
+  color: var(--accent-color);
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.rule-error-message {
+  color: #cecece;
+  font-size: 14px;
+}
+
+.group-error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.form-error-message {
+  color: red;
+  font-size: 15px;
+}
+
+.white-input {
+  background: none;
+  color: white;
+  border-bottom: .01rem;
+  border-color: white;
+  border-style: solid;
+}
+
+.white-input:focus {
+  background: none;
+  color: white;
+  border-bottom: .01rem;
+  border-color: white;
+  border-style: solid;
+}
+
+.close-button {
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.close-button-dark {
+  color: black;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.button-main, .button-main:hover, .button-main:focus {
+  color: var(--main-color);
+  padding: .75rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.button-accent, .button-accent:hover, .button-accent:focus {
+  color: var(--accent-color);
+  padding: .75rem 1rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.button-main-solid, .button-main-solid:hover, .button-main-solid:focus {
+  background-color: var(--main-color);
+  padding: .75rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+
+.button-accent-solid, .button-accent-solid:hover, .button-accent-solid:focus {
+  background-color: var(--accent-color);
+  padding: .75rem 1rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: white;
+}

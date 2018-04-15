@@ -1,0 +1,40 @@
+<div class="container">
+
+  <!--Latest video-->
+  <div class="top-video-container row mt-20" *ngIf="topVideo">
+    <!--Thumbnail-->
+    <div class="col s6" (click)="playVideo(topVideo)">
+      <img class="responsive-img hoverable" src="{{ topVideo.thumbnail }}">
+    </div>
+
+    <!--Other details-->
+    <div class="col s6">
+      <h2>{{ topVideo.title }}</h2>
+      <p class="flow-text">{{ topVideo.description }}</p>
+    </div>
+
+  </div>
+
+  <app-video-item (click)="playVideo(topVideo)" class="col s5 mt-20" *ngFor="let video of videos" [video]="video"></app-video-item>
+
+</div>
+
+<div class="video-player-container white-text" *ngIf="playingVideo" [ngClass]="{'hide-container': !playingVideo}">
+
+  <div (click)="closePlayer()" class="right">
+    <i class="material-icons">close</i>
+  </div>
+
+  <div class="container mt-50 plr-30">
+    <div class="video-container">
+      <iframe width="664" height="360" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <h2>{{playingVideo.title}}</h2>
+
+    <p class="flow-text">{{playingVideo.description}}</p>
+
+  </div>
+
+
+</div>
