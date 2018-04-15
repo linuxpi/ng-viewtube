@@ -44,48 +44,50 @@ export class VideoEditComponent implements OnInit {
     if (!this.authenticationService.isUserDataAvailable()) {
       this.router.navigate(['/login'])
     }
+    else {
+      this.videoForm = this.fb.group({
+        title: ['', Validators.required],
+        description: ['', Validators.required],
+        is_private: false,
+        thumbnail: ['', Validators.required],
+      });
 
-    this.videoForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      is_private: false,
-      thumbnail: ['', Validators.required],
-    });
+      this.videoId = this.route.params['value'].id;
 
-    this.videoId = this.route.params['value'].id;
+      if (this.videoId) {
+        this.service.getVideo(this.videoId).subscribe(
+          video => {
+            if (!video.is_owner) {
+              this.router.navigate(['/'])
+            }
+            this.thumbnailDisplay.nativeElement.src = video.thumbnail;
+            this.videoForm.setValue({
+              title: video.title,
+              description: video.description,
+              is_private: video.is_private,
+              thumbnail: video.thumbnail,
+            });
 
-    if (this.videoId) {
-      this.service.getVideo(this.videoId).subscribe(
-        video => {
-          this.thumbnailDisplay.nativeElement.src = video.thumbnail;
-          this.videoForm.setValue({
-            title: video.title,
-            description: video.description,
-            is_private: video.is_private,
-            thumbnail: video.thumbnail,
-          });
+            this.videoFile = video.file;
 
-          this.videoFile = video.file;
+            this.videoFileName = video.file.split('/').pop();
 
-          this.videoFileName = video.file.split('/').pop();
+            this.loading = false;
+          },
+          err => {
+            console.log(err);
+            this.loading = false;
+          }
+        );
+      }
+      this.videoForm.controls['title'].valueChanges.subscribe(data =>{
+        this.submitted = false;
+      });
 
-          this.loading = false;
-        },
-        err => {
-          this.loading = false;
-        }
-      );
-
+      this.videoForm.controls['description'].valueChanges.subscribe(data =>{
+        this.submitted = false;
+      });
     }
-
-    this.videoForm.controls['title'].valueChanges.subscribe(data =>{
-      this.submitted = false;
-    });
-
-    this.videoForm.controls['description'].valueChanges.subscribe(data =>{
-      this.submitted = false;
-    });
-
   }
 
   ngOnInit() {
