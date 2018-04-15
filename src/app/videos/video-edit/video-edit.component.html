@@ -46,7 +46,7 @@
 
       <div class="row">
         <div class="input-field col s6">
-          <input id="title" type="text" class="validate" formControlName="title"
+          <input id="title" type="text" class="validate" formControlName="title" maxlength="255"
                  placeholder="Give this video a nice Title" required>
 
           <div *ngIf="videoForm.controls['title'].errors && (!videoForm.controls['title'].pristine || submitted)" class="error-msg">
@@ -61,7 +61,7 @@
           <textarea data-length="120" id="description" class="materialize-textarea" formControlName="description"
                     placeholder="Try to describe the video" required></textarea>
           <div *ngIf="videoForm.controls['description'].errors && (!videoForm.controls['description'].pristine || submitted)" class="error-msg">
-            <div [hidden]="!videoForm.controls['title'].errors.required">Description is required!</div>
+            <div [hidden]="!videoForm.controls['description'].errors.required">Description is required!</div>
           </div>
         </div>
       </div>

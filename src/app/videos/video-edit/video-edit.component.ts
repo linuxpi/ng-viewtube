@@ -95,6 +95,10 @@ export class VideoEditComponent implements OnInit {
     let reader = new FileReader();
     if (event.target.files && event.target.files.length > 0) {
       let file = event.target.files[0];
+      if (file.size > 10*1024*1024) {
+        event.stopPropagation();
+        alert("Cant upload video greater than 10MB");
+      }
       reader.readAsDataURL(file);
       reader.onload = () => {
         if (isVideo) {

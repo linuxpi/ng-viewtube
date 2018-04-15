@@ -39,9 +39,7 @@ export class AuthenticationService {
 
     logout() {
         return this.http.get(API_ROOT + 'accounts/logout/')
-                        .map((response: Response) => {
-                          this.removeUserData();
-                        });
+                        .map((response: Response) => {});
     }
 
     // Function to remove user data

@@ -6,7 +6,6 @@ import { SECRET_KEY } from "app/constants";
 import { NavBarService } from 'app/core/navbar/navbar.service';
 import { NavBarState } from 'app/core/navbar/navbar.state';
 import {FormGroup, Validators, FormBuilder} from '@angular/forms';
-import {ValidateFn} from 'codelyzer/walkerFactory/walkerFn';
 
 @Component({
   selector: 'app-signup',
@@ -66,7 +65,15 @@ export class SignupComponent implements OnInit {
         data => {
           this.navigateToChallengeList();
         }, err => {
-          alert("Cannot create an account");
+          if (err.error.username) {
+            alert(err.error.username[0]);
+          }
+          else if (err.error.email) {
+            alert(err.error.email[0]);
+          }
+          else if (err.error.password) {
+            alert(err.error.password[0]);
+          }
         }
       );
     }

@@ -21,9 +21,9 @@
 
 <div class="video-player-container white-text" *ngIf="playingVideo" [ngClass]="{'hide-container': !playingVideo}">
 
-  <div class="right">
-    <i (click)="editVideo(playingVideo)" class="material-icons" *ngIf="playingVideo.is_owner">edit</i>
-    <i (click)="closePlayer()" class="material-icons">close</i>
+  <div class="controls">
+    <i (click)="editVideo(playingVideo)" class="mr-20 material-icons" *ngIf="playingVideo.is_owner">edit</i>
+    <i (click)="closePlayer()" class="mr-40 material-icons">close</i>
   </div>
 
   <div class="container mt-50 plr-30">

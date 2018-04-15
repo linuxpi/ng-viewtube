@@ -20,6 +20,7 @@ export class LogoutComponent implements OnInit {
     this.authenticationService.logout().subscribe(
       (data) => {
         this.router.navigate(['/login']);
+        this.authenticationService.removeUserData();
       }
     );
 
