@@ -1,12 +1,13 @@
 .video-player-container {
-  position: absolute;
-  height: 100vh;
-  width: 100%;
+  position: fixed;
   padding: 20px 0;
-  top: 0;
   overflow-y: auto;
+  top: 0;
   left: 0;
-  background-color: #000000ba;}
+  bottom: 0;
+  right: 0;
+  background-color: #000000ba;
+}
 
 .hide-container {
   z-index: -1;
